@@ -126,7 +126,7 @@ node *build(vector<int> &vec, int idx, int size)
     return newnode;
 }
 
-node *by_array(vector<int> &vec, node *&head)
+void by_array(vector<int> &vec, node *&head)
 {
     if (head == NULL)
     {
