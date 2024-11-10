@@ -147,6 +147,31 @@ bool deteced_loop(node *head)
     }
     return false;
 }
+int lengthOfLoop(node *head)
+{
+
+    node *slow = head;
+    node *fast = head;
+
+    while (fast != NULL && fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (fast == slow)
+            break;
+    }
+    if (fast != slow)
+        return -1;
+
+    int count = 1;
+    slow = slow->next;
+    while (slow != fast)
+    {
+        slow = slow->next;
+        count++;
+    }
+    return count;
+}
 int main()
 {
     list l;
@@ -158,5 +183,16 @@ int main()
     l.push_back(7);
     l.push_back(3);
     l.push_back(7);
+    node *temp = l.root;
+    temp = temp->next->next;
+    node *temp1 = l.root;
+    while (temp1->next != NULL)
+    {
+        temp1 = temp1->next;
+    }
+    temp1->next = temp;
+
     cout << deteced_loop(l.root);
+    cout << endl;
+    cout << lengthOfLoop(l.root);
 }
