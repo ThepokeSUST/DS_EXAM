@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <stack>
-
 using namespace std;
 
 int power(char ch)
@@ -23,11 +23,11 @@ string post(string str)
     {
         if (str[i] >= 'a' && str[i] <= 'z')
             res += str[i];
-        else if (str[i] == '(')
-            st.push(str[i]);
         else if (str[i] == ')')
+            st.push(str[i]);
+        else if (str[i] == '(')
         {
-            while (!st.empty() && st.top() != '(')
+            while (!st.empty() && st.top() != ')')
             {
                 res += st.top();
                 st.pop();
@@ -68,7 +68,9 @@ int main()
     // cout << "Hello World!" << endl;
     string str;
     cin >> str;
+    reverse(str.begin(), str.end());
     string res = post(str);
+    reverse(res.begin(), res.end());
     cout << res;
     return 0;
 }
