@@ -20,10 +20,15 @@ vector<int> nextSmallestEle(vector<int> &vec)
         st.push(i);
     }
 
-    /*for (auto ele : res)
-        cout << ele << " ";
-    cout << endl;
-*/
+    while (!st.empty())
+    {
+        res[st.top()] = n;
+        st.pop();
+    }
+    /*    for (auto ele : res)
+            cout << ele << " ";
+        cout << endl;
+    */
     return res;
 }
 
@@ -58,29 +63,15 @@ int largestRect(vector<int> &vec)
     {
         int a = prevsmall[i];
         int b = nextsmall[i];
-        if (a == -1 && b == -1)
-        {
-            ans = max(ans, (n * vec[i]));
-        }
-        else if (a == -1)
-        {
-            ans = max(ans, (b * vec[i]));
-        }
-        else if (b == -1)
-        {
-            ans = max(ans, (n - a + b) * vec[i]);
-        }
-        else
-        {
-            ans = max(ans, (b - a - 1) * vec[i]);
-        }
+
+        ans = max(ans, ((b - a - 1) * vec[i]));
     }
     return ans;
 }
 
 int main()
 {
-    vector<int> vec = {2, 4, 3, 2, 5, 3, 2};
+    vector<int> vec = {4, 3, 2, 1, 5};
 
     cout << largestRect(vec);
 }
