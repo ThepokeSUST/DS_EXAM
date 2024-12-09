@@ -34,6 +34,8 @@ int findCeleb(vector<vector<int>> &vec, int n)
         if (i != ele)
             if (vec[i][ele] != 1)
                 return -1;
+        if (vec[ele][i] == 1)
+            return -1;
     }
     return ele;
 }
