@@ -8,9 +8,7 @@ using namespace std;
 map<char, int> mp;
 map<int, char> rmp;
 
-void BFS(vector<vector<int>> &adj, int node)
-{
-}
+// disjkstra does work on negative waight......
 void disjkstra(vector<vector<pair<int, int>>> &adj, int node, int v)
 {
 
